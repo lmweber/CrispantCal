@@ -7,6 +7,6 @@ Web tool to calculate volumes for an optimal 1:1 gRNA to Cas9 mix ratio in a CRI
 
 How to access:
 
-(1) Web address of Shiny app: https://github.com/lmwebr/CrispantCal
+(1) Web address of Shiny app: https://lmwebr.shinyapps.io/CrispantCal/
 
 (2) runGitHub...
