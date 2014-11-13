@@ -39,3 +39,4 @@ f_ddH2O_vol <- function(gRNA_vol,Cas9_vol,KCl_vol,total_vol) {
 f_DNA_molarMass <- function(An,Tn,Cn,Gn) {
   as.numeric( (An * 329.21) + (Tn * 306.17) + (Cn * 305.18) + (Gn * 345.21) + 159.0 )  # [g/mol]
 }
+
