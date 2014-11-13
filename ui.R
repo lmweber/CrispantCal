@@ -116,7 +116,7 @@ shinyUI(fluidPage(
         reaction efficiency has been observed at a KCl concentration of around 
         300 mM, but Cas9 samples are often provided in 100-150 mM KCl solution, 
         which is then further diluted by the rest of the injection mix."),
-      p("Authors: Jonas Zaugg and Lukas M Weber (Christian Mosimann and Mark D 
+      p("Authors: Jonas Zaugg and Lukas M. Weber (Christian Mosimann and Mark D. 
         Robinson labs, Institute of Molecular Life Sciences, University of 
         Zurich).")
       
