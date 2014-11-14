@@ -12,9 +12,9 @@ For more details on how to use the tool, and details on the calculations, see th
 
 The tool can be accessed in two ways:
 
-* By desktop or mobile browser at the following web address: https://lmwebr.shinyapps.io/CrispantCal/
+* In a web browser (desktop or mobile) at the following address: https://lmwebr.shinyapps.io/CrispantCal/
 
-* Within R using the command `runGitHub("CrispantCal","lmwebr")`. This requires the `shiny` package, which can be installed and loaded with `install.packages("shiny")` and `library("shiny")`.
+* Within R using the command `runGitHub("CrispantCal","lmwebr")`. This requires the `shiny` package, which can be installed and loaded with `install.packages("shiny")` and `library(shiny)`.
 
 
 ### Authors
