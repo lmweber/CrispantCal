@@ -1,0 +1,5 @@
+# files generated to deploy app on ShinyApps.io
+shinyapps/
+
+# OS generated files
+.DS_Store
