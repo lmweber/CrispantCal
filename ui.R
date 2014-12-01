@@ -29,7 +29,7 @@ shinyUI(fluidPage(
       br(),
       br(),
       
-      h4("Cas9"),
+      h4("Cas9 sample properties"),
       helpText("Choose one of the preset defaults or enter custom values."),
       selectInput("Cas9_select",label="",
                   choices=list("MJ922 - Cas9p GFP",
@@ -44,14 +44,14 @@ shinyUI(fluidPage(
                    label="Mass concentration (g/L)",
                    value=2.97,
                    step=0.01),
-      br(),
-      br(),
-      
-      h4("Volumes"),
       numericInput("Cas9_vol_custom",
                    label="Volume of Cas9 solution (µL)",
                    value=1.40,
                    step=0.01),
+      br(),
+      br(),
+      
+      h4("Total volume"),
       numericInput("total_vol",
                    label="Total volume of injection mix (µL)",
                    value=5.00,
@@ -59,11 +59,26 @@ shinyUI(fluidPage(
       br(),
       br(),
       
-      h4("KCl diluent"),
+      h4("Optional: Final Cas9 concentration"),
+      helpText("Select whether to specify final concentration of Cas9 instead 
+               of total volume. If yes, enter concentration."),
+      radioButtons("final_conc_radio",
+                   label="",
+                   choices=list("No","Yes"),
+                   selected="No"),
+      numericInput("Cas9_final_massConc",
+                   label="Final mass concentration of Cas9 in injection mix 
+                         (ng/µL)",
+                   value=832,
+                   step=1),
+      br(),
+      br(),
+      
+      h4("Optional: KCl diluent"),
       helpText("Select whether to add additional KCl diluent. If yes, enter 
                concentrations."),
       radioButtons("KCl_radio",
-                   label="Add additional KCl diluent?",
+                   label="",
                    choices=list("No","Yes"),
                    selected="No"),
       numericInput("KCl_Cas9_conc",
@@ -90,13 +105,14 @@ shinyUI(fluidPage(
       br(),
       
       h3("Information"),
-      p("This tool calculates volumes corresponding to a perfect 1:1 mix ratio 
+      p("This tool calculates volumes corresponding to an optimal 1:1 mix ratio 
         of gRNA to Cas9 molecules in a CRISPR/Cas9 injection."),
-      p("Enter the properties of your gRNA and Cas9 samples, volume of Cas9 
-        solution, and the desired total volume of injection mix. Default values 
-        are available for the Cas9 samples currently used in the Mosimann lab. 
-        The calculated volumes for an optimal mix ratio are then shown in the 
-        table and plot above."),
+      p("Enter the molecular properties of your gRNA and Cas9 samples, volume 
+        of Cas9 solution, and desired total volume of injection mix. Default 
+        values are available for the Cas9 samples currently used in the Mosimann 
+        lab. Optionally, the desired final concentration of Cas9 in the injection 
+        mix can be specified instead of total volume. The calculated volumes for 
+        the optimal mix ratio are then shown in the table and plot above."),
       p("The gRNA molar mass can be calculated by entering the DNA template 
         sequence (e.g. \"ATCG\") or entering a custom value directly. If 
         entering a DNA sequence, it can be either the full sequence (crRNA 

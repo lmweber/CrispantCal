@@ -33,6 +33,18 @@ f_ddH2O_vol <- function(gRNA_vol,Cas9_vol,KCl_vol,total_vol) {
 }
 
 
+# function to calculate final mass concentration of Cas9
+f_Cas9_final_massConc <- function(Cas9_massConc,Cas9_vol,total_vol) {
+  ( Cas9_massConc * Cas9_vol * 1000 ) / total_vol  # [ng/µL]
+}
+
+
+# function to calculate total volume given final mass concentration of Cas9
+f_total_vol <- function(Cas9_massConc,Cas9_vol,Cas9_final_massConc) {
+  ( Cas9_massConc * Cas9_vol * 1000 ) / Cas9_final_massConc  # [µL]
+}
+
+
 # function to calculate molecular weight of gRNA from DNA template sequence
 # (T converted to U, and assuming 5' triphosphate; 
 # source: http://www.basic.northwestern.edu/biotools/oligocalc.html)

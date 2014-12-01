@@ -69,6 +69,27 @@ shinyServer(
       f_gRNA_vol(input$gRNA_molarMass,input$gRNA_massConc,
                  Cas9_molarMass(),Cas9_massConc(),Cas9_vol())
     })
+    
+    # calculate and update final mass concentration of Cas9
+    Cas9_final_massConc <- reactive({
+      f_Cas9_final_massConc(Cas9_massConc(),Cas9_vol(),input$total_vol)
+    })
+    observe({
+      if (input$final_conc_radio=="No") {
+        updateNumericInput(session,"Cas9_final_massConc",value=round(Cas9_final_massConc(),1))
+      }
+    })
+    
+    # calculate and update total volume
+    total_vol <- reactive({
+      f_total_vol(Cas9_massConc(),Cas9_vol(),input$Cas9_final_massConc)
+    })
+    observe({
+      if (input$final_conc_radio=="Yes") {
+        updateNumericInput(session,"total_vol",value=round(total_vol(),2))
+      }
+    })
+    
     # calculate volume of additional KCl diluent (if selected)
     KCl_vol <- reactive({
       if (input$KCl_radio=="Yes") {
@@ -78,6 +99,7 @@ shinyServer(
         0
       }
     })
+    
     # calculate volume of ddH2O (remaining volume to reach total)
     ddH2O_vol <- reactive({
       f_ddH2O_vol(gRNA_vol(),Cas9_vol(),KCl_vol(),input$total_vol)
@@ -115,7 +137,7 @@ shinyServer(
     # output plot
     output$volume_plot <- renderPlot({
       data <- unlist(data_list()[1:4])
-      barplot(data,ylim=c(0,input$total_vol),
+      barplot(data,ylim=c(0,round(input$total_vol,1)),
               ylab="Volume (µL)",col="skyblue")
       text(seq(0.7,4.3,length=4),sapply(data,max,0),
            labels=data,pos=3)
