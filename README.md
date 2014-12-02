@@ -18,7 +18,7 @@ The tool can be accessed in two ways:
 
 If you are not familiar with R, we highly recommend RStudio as a user-friendly editor and development environment. RStudio can be downloaded from http://www.rstudio.com/. Before you install RStudio, you also need to install R itself, which can be downloaded from http://cran.r-project.org/. Both R and RStudio are free. The RStudio website also includes links to tutorials and online learning resources on R programming at http://www.rstudio.com/resources/training/online-learning/.
 
-Once you have installed R and RStudio, open RStudio and paste the commands above into the "Console" window, which should be on the left or in the bottom left corner of the screen in the default layout. The CrispantCal tool should then launch in a new window or in the "Viewer" pane on the right.
+Once you have installed R and RStudio, open RStudio and paste the commands above into the "Console" window, which should be on the left or in the bottom left corner of the screen (in the default layout). The CrispantCal tool should then launch in a new window or in the "Viewer" pane on the right.
 
 
 ### Authors
