@@ -14,7 +14,11 @@ The tool can be accessed in two ways:
 
 * In a web browser (desktop or mobile) at the following address: https://lmwebr.shinyapps.io/CrispantCal/
 
-* Within R using the command `runGitHub("CrispantCal","lmwebr")`. This requires the `shiny` package, which can be installed and loaded with `install.packages("shiny")` and `library(shiny)`.
+* Within R/RStudio, by installing and running from this GitHub repository using the command `runGitHub("CrispantCal","lmwebr")`. This requires the "shiny" package to be installed and loaded first, which can be done with the commands `install.packages("shiny")` and `library(shiny)`.
+
+If you are not familiar with R, we highly recommend RStudio as a user-friendly editor and development environment. RStudio can be downloaded from http://www.rstudio.com/. Before you install RStudio, you also need to install R itself, which can be downloaded from http://cran.r-project.org/. Both R and RStudio are free.
+
+The RStudio website includes links to tutorials and online learning resources on R programming at http://www.rstudio.com/resources/training/online-learning/.
 
 
 ### Authors
@@ -24,5 +28,4 @@ Developed by Jonas Zaugg and Lukas M. Weber (Christian Mosimann and Mark D. Robi
 
 ### References
 
-forthcoming paper (to update)
-
+Burger et al. (2014), *Crispants: somatic mutagenesis with active CRISPR-Cas9 complexes in zebrafish*, submitted.
