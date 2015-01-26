@@ -1,6 +1,17 @@
 CrispantCal
 ===========
 
+### To update:
+
+* Link to new website
+
+* move some info below to website
+
+* note that website files have been included
+
+
+### Previous info below...
+
 Web tool to calculate optimal injection mix volumes for CRISPR/Cas9 experiments.
 
 Developed using the Shiny web application framework for R, and hosted online using the ShinyApps.io service.
