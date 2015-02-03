@@ -47,7 +47,7 @@ shinyServer(
       f_DNA_molarMass(DNA_table()["A"],DNA_table()["T"],DNA_table()["C"],DNA_table()["G"])
     })
     DNA_molarMass <- reactive({
-      if (input$add_tracrRNA=="Yes") {
+      if (input$add_tracrRNA==TRUE) {
         return( DNA_molarMass_calc() + 25981.5 )
       } else {
         return( DNA_molarMass_calc() )
