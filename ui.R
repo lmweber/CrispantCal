@@ -1,138 +1,140 @@
 # ui.R
 
 shinyUI(fluidPage(
-  titlePanel("CrispantCal: CRISPR-Cas9 Injection Mix Calculator"),
+  titlePanel(title="CrispantCal: CRISPR-Cas9 Injection Mix Calculator",
+             windowTitle="CrispantCal"),
   
   sidebarLayout(
     sidebarPanel(
       
       h4("gRNA sample properties"),
       
-      helpText(strong("gRNA molar mass")),
+      h5("gRNA molar mass"),
       helpText("Enter DNA template to calculate molar mass, or enter custom 
                value directly."),
+      helpText("DNA sequence (e.g. ATCG)"),
       textInput("DNA_template",
-                label="DNA sequence (e.g. ATCG)",
+                label=NULL,
                 value=""),
       checkboxInput("add_tracrRNA",
                    label="Add tracrRNA and UUUUU-end",
                    value=FALSE),
-      br(),
+      helpText("Molar mass (g/mol)"),
       numericInput("gRNA_molarMass",
-                   label="Molar mass (g/mol)",
+                   label=NULL,
                    value=33382.6,
                    step=0.1),
-      br(),
-      br(),
       
-      helpText(strong("gRNA concentration")),
+      h5("gRNA concentration"),
+      helpText("Mass concentration (ng/µL)"),
       numericInput("gRNA_massConc",
-                   label="Mass concentration (ng/µL)",
+                   label=NULL,
                    value=265,
                    step=1),
-      br(),
-      br(),
       
       
+      hr(),
       h4("Optional: Second gRNA sample"),
-      radioButtons("second_gRNA_sample",
-                   label="Select whether to include a second gRNA sample. If 
-                         yes, enter sample properties below.",
+      helpText("Select whether to include a second gRNA sample. If yes, enter 
+               sample properties below."),
+      radioButtons("two_gRNA_samples",
+                   label=NULL,
                    choices=list("No","Yes"),
                    selected="No"),
-      helpText(""),
-      br(),
       
-      helpText(strong("gRNA molar mass")),
+      h5("gRNA molar mass"),
+      helpText("DNA sequence (e.g. ATCG)"),
       textInput("DNA_template_2nd",
-                label="DNA sequence (e.g. ATCG)",
+                label=NULL,
                 value=""),
       checkboxInput("add_tracrRNA_2nd",
                    label="Add tracrRNA and UUUUU-end",
                    value=FALSE),
-      br(),
+      helpText("Molar mass (g/mol)"),
       numericInput("gRNA_molarMass_2nd",
-                   label="Molar mass (g/mol)",
+                   label=NULL,
                    value=33382.6,
                    step=0.1),
-      br(),
-      br(),
       
-      helpText(strong("gRNA concentration")),
+      h5("gRNA concentration"),
+      helpText("Mass concentration (ng/µL)"),
       numericInput("gRNA_massConc_2nd",
-                   label="Mass concentration (ng/µL)",
+                   label=NULL,
                    value=265,
                    step=1),
-      br(),
-      br(),
       
       
+      hr(),
       h4("Cas9 sample properties"),
       helpText("Choose one of the preset defaults or enter custom values."),
       selectInput("Cas9_select",
-                  label="",
+                  label=NULL,
                   choices=list("MJ922 - Cas9p GFP",
                                "MJ923 - Cas9p mCherry",
                                "Custom"),
                   selected="MJ922 - Cas9p GFP"),
+      helpText("Molar mass (kg/mol or kDa)"),
       numericInput("Cas9_molarMass_custom",
-                   label="Molar mass (kg/mol or kDa)",
+                   label=NULL,
                    value=191.200,
                    step=0.1),
+      helpText("Mass concentration (g/L)"),
       numericInput("Cas9_massConc_custom",
-                   label="Mass concentration (g/L)",
+                   label=NULL,
                    value=2.97,
                    step=0.01),
+      helpText("Volume of Cas9 solution (µL)"),
       numericInput("Cas9_vol_custom",
-                   label="Volume of Cas9 solution (µL)",
+                   label=NULL,
                    value=1.40,
                    step=0.01),
-      br(),
-      br(),
       
       
+      hr(),
       h4("Total volume"),
+      helpText("Total volume of injection mix (µL)"),
       numericInput("total_vol",
-                   label="Total volume of injection mix (µL)",
+                   label=NULL,
                    value=5.00,
                    step=1),
-      br(),
-      br(),
       
       
+      hr(),
       h4("Optional: Final Cas9 concentration"),
       helpText("Select whether to specify final concentration of Cas9 instead 
                of total volume. If yes, enter concentration."),
       radioButtons("final_conc_radio",
-                   label="",
+                   label=NULL,
                    choices=list("No","Yes"),
                    selected="No"),
+      helpText("Final mass concentration of Cas9 in injection mix (ng/µL)"),
       numericInput("Cas9_final_massConc",
-                   label="Final mass concentration of Cas9 in injection mix 
-                         (ng/µL)",
+                   label=NULL,
                    value=832,
                    step=1),
-      br(),
-      br(),
       
       
+      hr(),
       h4("Optional: KCl diluent"),
       helpText("Select whether to add additional KCl diluent. If yes, enter 
                concentrations."),
       radioButtons("KCl_radio",
-                   label="",
+                   label=NULL,
                    choices=list("No","Yes"),
                    selected="No"),
+      helpText("KCl concentration of Cas9 solution (mM)"),
       numericInput("KCl_Cas9_conc",
-                   label="KCl conc. of Cas9 solution (mM)",
+                   label=NULL,
                    value=100,
                    step=1),
+      helpText("KCl concentration of diluent (mM)"),
       numericInput("KCl_diluent_conc",
-                   label="KCl conc. of diluent (mM)",
+                   label=NULL,
                    value=2000,
                    step=1),
+      helpText("Desired KCl concentration (mM)"),
       numericInput("KCl_final_conc",
-                   label="Desired KCl conc. (mM)",
+                   label=NULL,
                    value=300,
                    step=1)
       
@@ -158,7 +160,7 @@ shinyUI(fluidPage(
       
       
       br(),
-      h3("Notes"),
+      h4("Notes"),
       
       h5("gRNA inputs"),
       tags$ul(
@@ -188,7 +190,7 @@ shinyUI(fluidPage(
       
       h5("Cas9 inputs"),
       tags$ul(
-        tags$li("Default values for the Cas9 sample properties are available for 
+        tags$li("Default values for Cas9 sample properties are available for 
                 the Cas9 samples currently used in the Mosimann lab at the 
                 University of Zurich."),
         br(),
