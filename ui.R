@@ -145,7 +145,8 @@ shinyUI(fluidPage(
     
     mainPanel(
       
-      h3("Optimal injection mix"),
+      h3("Optimal injection mix",
+         style="margin-top:30px; margin-bottom:30px"),
       tableOutput("volume_table"),
       plotOutput("volume_plot", width="300px", height="300px"),
       
@@ -161,15 +162,14 @@ shinyUI(fluidPage(
         shown in the table and plot above."),
       
       
-      br(),
-      h4("Notes",
-         style="margin-bottom:12px"),
+      h3("Notes",
+         style="margin-top:36px"),
       
-      h5("gRNA inputs",
+      h4("gRNA inputs",
          style="margin-top:18px; margin-bottom:12px"),
       tags$ul(
         tags$li("The gRNA molar mass can be calculated by entering the DNA 
-                template sequence (e.g. \"ATCG\") or entering a custom value 
+                template sequence (e.g. ATCG...) or entering a custom value 
                 directly. If entering a DNA sequence, it can be either the full 
                 sequence (crRNA + tracrRNA, around 100 nt) or the crRNA only 
                 (around 20 nt). If you enter the crRNA only, select the option 
@@ -187,13 +187,13 @@ shinyUI(fluidPage(
         tags$li("The optional inputs for a second gRNA sample allow you to 
                 calculate volumes for an experiment targeting two DNA locations. 
                 The calculations assume that the two gRNAs are required in equal 
-                proportions. Output volumes are then shown for a one-to-one 
-                ratio of Cas9 to the combined concentration of gRNA from both 
+                proportions. Output volumes are then calculated for a one-to-one 
+                ratio of Cas9 to the combined concentration of the two gRNA 
                 samples.",
                 style="margin-bottom:12px")
       ),
       
-      h5("Cas9 inputs",
+      h4("Cas9 inputs",
          style="margin-top:18px; margin-bottom:12px"),
       tags$ul(
         tags$li("Default values for Cas9 sample properties are available for 
@@ -206,31 +206,34 @@ shinyUI(fluidPage(
                 style="margin-bottom:12px")
       ),
       
-      h5("KCl diluent",
+      h4("KCl diluent",
          style="margin-top:18px; margin-bottom:12px"),
       tags$ul(
-        tags$li("The", em("KCl diluent"), "option allows you to calculate the 
-                additional volume of KCl diluent required to increase the KCl 
-                concentration in the injection mix to a desired value. This 
-                option was added because optimal reaction efficiency has been 
-                observed at a KCl concentration of around 300 mM, but Cas9 
-                samples are often provided in 100-150 mM KCl solution, which is 
-                then further diluted by the rest of the injection mix.",
+        tags$li("The KCl diluent option allows you to calculate the additional 
+                volume of KCl diluent required to increase the KCl concentration 
+                in the injection mix to a desired value. This option was added 
+                because optimal reaction efficiency has been observed at a KCl 
+                concentration of around 300 mM, but Cas9 samples are often 
+                provided in 100-150 mM KCl solution, which is then further 
+                diluted by the rest of the injection mix.",
                 style="margin-bottom:12px")
       ),
       
       
-      br(),
-      h4("Authors"),
+      h3("Authors",
+         style="margin-top:36px"),
       
       p("This tool was developed by Lukas M. Weber, Jonas Zaugg, Anastasia Felker, 
         and Christian Mosimann (Mark D. Robinson and Christian Mosimann labs), 
         Institute of Molecular Life Sciences, University of Zurich."),
       p("Additional information including local installation instructions 
         available at",
-        a("crispantcal.io",
+        a("http://crispantcal.io",
           href="http://crispantcal.io/"),
-        ".")
+        "."),
+      
+      br(),
+      br()
     )
   )
 ))
