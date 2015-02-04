@@ -9,9 +9,9 @@ shinyUI(fluidPage(
       
       h4("gRNA sample properties"),
       
-      h5("gRNA molar mass"),
-      helpText("Enter DNA template to calculate molar mass, or enter custom 
-               value directly."),
+      helpText(span("gRNA molar mass:", style="font-weight:bold"),
+               "Enter DNA template sequence to calculate molar mass, or enter 
+               custom value directly."),
       helpText("DNA sequence (e.g. ATCG)"),
       textInput("DNA_template",
                 label=NULL,
@@ -25,8 +25,8 @@ shinyUI(fluidPage(
                    value=33382.6,
                    step=0.1),
       
-      h5("gRNA concentration"),
-      helpText("Mass concentration (ng/µL)"),
+      helpText(span("gRNA concentration:", style="font-weight:bold"),
+               "Mass concentration (ng/µL)"),
       numericInput("gRNA_massConc",
                    label=NULL,
                    value=265,
@@ -42,7 +42,9 @@ shinyUI(fluidPage(
                    choices=list("No","Yes"),
                    selected="No"),
       
-      h5("gRNA molar mass"),
+      helpText(span("gRNA molar mass:", style="font-weight:bold"),
+               "Enter DNA template sequence to calculate molar mass, or enter 
+               custom value directly."),
       helpText("DNA sequence (e.g. ATCG)"),
       textInput("DNA_template_2nd",
                 label=NULL,
@@ -56,8 +58,8 @@ shinyUI(fluidPage(
                    value=33382.6,
                    step=0.1),
       
-      h5("gRNA concentration"),
-      helpText("Mass concentration (ng/µL)"),
+      helpText(span("gRNA concentration:", style="font-weight:bold"),
+               "Mass concentration (ng/µL)"),
       numericInput("gRNA_massConc_2nd",
                    label=NULL,
                    value=265,
@@ -160,9 +162,11 @@ shinyUI(fluidPage(
       
       
       br(),
-      h4("Notes"),
+      h4("Notes",
+         style="margin-bottom:12px"),
       
-      h5("gRNA inputs"),
+      h5("gRNA inputs",
+         style="margin-top:18px; margin-bottom:12px"),
       tags$ul(
         tags$li("The gRNA molar mass can be calculated by entering the DNA 
                 template sequence (e.g. \"ATCG\") or entering a custom value 
@@ -170,36 +174,40 @@ shinyUI(fluidPage(
                 sequence (crRNA + tracrRNA, around 100 nt) or the crRNA only 
                 (around 20 nt). If you enter the crRNA only, select the option 
                 to add the tracrRNA and UUUUU-end (25,981.5 g/mol) to give the 
-                full sequence."),
-        br(),
+                full sequence.",
+                style="margin-bottom:12px"),
         tags$li("The calculation formula for the gRNA molar mass is: ",
                 em("(A * 329.21) + (U * 306.17) + (C * 305.18) + (G * 345.21) + 159.0,"),
                 "where A, U, C, and G are the number of each nucleotide, all T's 
                 are assumed to be converted to U's, and the 159.0 term is for a 
                 5' triphosphate.",
                 a("Link to formula source and further details.",
-                  href="http://www.basic.northwestern.edu/biotools/oligocalc.html")),
-        br(),
+                  href="http://www.basic.northwestern.edu/biotools/oligocalc.html"),
+                style="margin-bottom:12px"),
         tags$li("The optional inputs for a second gRNA sample allow you to 
                 calculate volumes for an experiment targeting two DNA locations. 
                 The calculations assume that the two gRNAs are required in equal 
                 proportions. Output volumes are then shown for a one-to-one 
                 ratio of Cas9 to the combined concentration of gRNA from both 
-                samples.")
+                samples.",
+                style="margin-bottom:12px")
       ),
       
-      h5("Cas9 inputs"),
+      h5("Cas9 inputs",
+         style="margin-top:18px; margin-bottom:12px"),
       tags$ul(
         tags$li("Default values for Cas9 sample properties are available for 
                 the Cas9 samples currently used in the Mosimann lab at the 
-                University of Zurich."),
-        br(),
+                University of Zurich.",
+                style="margin-bottom:12px"),
         tags$li("The optional input for final Cas9 concentration allows you to
                 specify a desired final concentration of Cas9 in the injection 
-                mix, instead of total volume.")
+                mix, instead of total volume.",
+                style="margin-bottom:12px")
       ),
       
-      h5("KCl diluent"),
+      h5("KCl diluent",
+         style="margin-top:18px; margin-bottom:12px"),
       tags$ul(
         tags$li("The", em("KCl diluent"), "option allows you to calculate the 
                 additional volume of KCl diluent required to increase the KCl 
@@ -207,7 +215,8 @@ shinyUI(fluidPage(
                 option was added because optimal reaction efficiency has been 
                 observed at a KCl concentration of around 300 mM, but Cas9 
                 samples are often provided in 100-150 mM KCl solution, which is 
-                then further diluted by the rest of the injection mix.")
+                then further diluted by the rest of the injection mix.",
+                style="margin-bottom:12px")
       ),
       
       
