@@ -33,40 +33,6 @@ shinyUI(fluidPage(
                    step=1),
       
       
-##      hr(),
-##      h4("Optional: Second gRNA sample"),
-##      helpText("Select whether to include a second gRNA sample. If yes, enter 
-##               sample properties below."),
-##      radioButtons("two_gRNA_samples",
-##                   label=NULL,
-##                   choices=list("No","Yes"),
-##                   selected="No"),
-##      
-##      helpText(span("gRNA molar mass:", style="font-weight:bold"),
-##               "Enter DNA template sequence to calculate molar mass, or enter 
-##               custom value directly."),
-##      helpText("DNA sequence (e.g. ATCG)"),
-##      textInput("DNA_template_2nd",
-##                label=NULL,
-##                value=""),
-##      checkboxInput("add_tracrRNA_2nd",
-##                   label="Add tracrRNA and UUUUU-end",
-##                   value=FALSE),
-##      helpText("Molar mass (g/mol)"),
-##      numericInput("gRNA_molarMass_2nd",
-##                   label=NULL,
-##                   value=33382.6,
-##                   step=0.1),
-##      
-##      helpText(span("gRNA concentration:", style="font-weight:bold"),
-##               "Mass concentration (ng/µL)"),
-##      numericInput("gRNA_massConc_2nd",
-##                   label=NULL,
-##                   value=265,
-##                   step=1),
-## [removed for public version]
-      
-      
       hr(),
       h4("Cas9 sample properties"),
       helpText("Choose one of the preset defaults or enter custom values."),
@@ -74,9 +40,6 @@ shinyUI(fluidPage(
                   label=NULL,
                   choices=list("MJ922 - Cas9p GFP",
                                "MJ923 - Cas9p mCherry",
-#####                               "MJ844 - Cas9 flag",
-#####                               "MJ847 - dCas9 flag",
-##### [removed for public version]
                                "Custom"),
                   selected="MJ922 - Cas9p GFP"),
       helpText("Molar mass (kg/mol or kDa)"),
@@ -187,15 +150,7 @@ shinyUI(fluidPage(
                 5' triphosphate.",
                 a("Link to formula source and further details.",
                   href="http://www.basic.northwestern.edu/biotools/oligocalc.html"),
-                style="margin-bottom:12px")########,
-##        tags$li("The optional inputs for a second gRNA sample allow you to 
-##                calculate volumes for an experiment targeting two DNA locations. 
-##                The calculations assume that the two gRNAs are required in equal 
-##                proportions. Output volumes are then calculated for a one-to-one 
-##                ratio of Cas9 to the combined concentration of the two gRNA 
-##                samples.",
-##                style="margin-bottom:12px")
-## [removed for public version]
+                style="margin-bottom:12px")
       ),
       
       h4("Cas9 inputs",
@@ -231,13 +186,7 @@ shinyUI(fluidPage(
       p("This tool was developed by Lukas M. Weber, Jonas Zaugg, Anastasia Felker, 
         and Christian Mosimann (Mark D. Robinson and Christian Mosimann labs), 
         Institute of Molecular Life Sciences, University of Zurich."),
-##      p("Additional information including local installation instructions 
-##        available at",
-##        a("http://crispantcal.io",
-##          href="http://crispantcal.io/"),
-##        "."),
-## [removed for public version]
-      
+
       br(),
       br()
     )

@@ -21,10 +21,7 @@ shinyServer(
     sel <- reactive({
       switch(input$Cas9_select,
              "MJ922 - Cas9p GFP"    =Cas9_defaults$"MJ922 - Cas9p GFP",
-             "MJ923 - Cas9p mCherry"=Cas9_defaults$"MJ923 - Cas9p mCherry")#,
-#####             "MJ844 - Cas9 flag"    =Cas9_defaults$"MJ844 - Cas9 flag",
-#####             "MJ847 - dCas9 flag"   =Cas9_defaults$"MJ847 - dCas9 flag")
-##### [removed for public version]
+             "MJ923 - Cas9p mCherry"=Cas9_defaults$"MJ923 - Cas9p mCherry")
     })
     observe({ updateNumericInput(session,"Cas9_molarMass_custom",value=sel()[1]) })
     observe({ updateNumericInput(session,"Cas9_massConc_custom", value=sel()[2]) })
@@ -66,56 +63,20 @@ shinyServer(
     })
     
     
-    # inputs for optional second gRNA sample (same functions as above)
-##    DNA_table_2nd <- reactive({
-##      DNA_letters_2nd <- unlist(strsplit(input$DNA_template_2nd,""))
-##      table(factor(DNA_letters_2nd,levels=c("A","T","C","G")))
-##    })
-##    DNA_molarMass_2nd_calc <- reactive({
-##      f_DNA_molarMass(DNA_table_2nd()["A"],
-##                      DNA_table_2nd()["T"],
-##                      DNA_table_2nd()["C"],
-##                      DNA_table_2nd()["G"])
-##    })
-##    DNA_molarMass_2nd <- reactive({
-##      if (input$add_tracrRNA_2nd==TRUE) {
-##        return( DNA_molarMass_2nd_calc() + tracrRNA_UUUUU_default )
-##      } else {
-##        return( DNA_molarMass_2nd_calc() )
-##      }
-##    })
-##    observe({ 
-##      if ( !(all(DNA_table_2nd()==0)) ) {
-##        updateNumericInput(session,"gRNA_molarMass_2nd",value=DNA_molarMass_2nd())
-##      }
-##    })
-## [removed for public version]
-    
-    
-    
     # Calculate volumes
     # -----------------
     
     # calculate volume of 1st sample of gRNA
     gRNA_vol_1st <- reactive({
       f_gRNA_vol(input$gRNA_molarMass,input$gRNA_massConc,
-                 Cas9_molarMass(),Cas9_massConc(),Cas9_vol())#####,
-#####                 input$two_gRNA_samples)
-##### [removed for public version]
+                 Cas9_molarMass(),Cas9_massConc(),Cas9_vol())
     })
     
     # calculate volume of 2nd sample of gRNA
     gRNA_vol_2nd <- reactive({
-##      if (input$two_gRNA_samples=="Yes") {
-##        f_gRNA_vol(input$gRNA_molarMass_2nd,input$gRNA_massConc_2nd,
-##                   Cas9_molarMass(),Cas9_massConc(),Cas9_vol(),
-##                   input$two_gRNA_samples)
-##      } else {
         0
-##      }
     })
-## [removed for public version]
-    
+
     # calculate and update final mass concentration of Cas9
     Cas9_final_massConc <- reactive({
       f_Cas9_final_massConc(Cas9_massConc(),Cas9_vol(),input$total_vol)
@@ -170,11 +131,7 @@ shinyServer(
     
     # volumes as list
     data_list <- reactive({
-#####      list(gRNA_1=gRNA_vol_1st_rnd(),
-##### [edited for public version]
       list(gRNA=gRNA_vol_1st_rnd(),
-#####           gRNA_2=gRNA_vol_2nd_rnd(),
-##### [removed for public version]
            Cas9=Cas9_vol_rnd(),
            KCl=KCl_vol_rnd(),
            ddH2O=ddH2O_vol_rnd(),
@@ -188,13 +145,9 @@ shinyServer(
     
     # output plot
     output$volume_plot <- renderPlot({
-#####      data <- unlist(data_list()[1:5])
-##### [edited for public version]
       data <- unlist(data_list()[1:4])
       barplot(data, col="skyblue", ylim=c(0,round(input$total_vol,1)), 
               las=2, ylab="Volume (µL)")
-#####      text(seq(0.7,5.5,length=5),sapply(data,max,0),
-##### [edited for public version]
       text(seq(0.7,4.3,length=4),sapply(data,max,0),
                 labels=data,pos=3)
     })
