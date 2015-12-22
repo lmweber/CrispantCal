@@ -43,16 +43,18 @@
 <h3>
 <a id="how-to-access" class="anchor" href="#how-to-access" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to access</h3>
 
-<p>The CrispantCal app can be accessed in two ways:</p>
+<p>The CrispantCal web app can be accessed with a desktop or mobile browser at the following address: <a href="https://lmweber.shinyapps.io/CrispantCal">https://lmweber.shinyapps.io/CrispantCal</a></p>
 
-<ul>
-<li><p>In a web browser (desktop or mobile) at the following address: <a href="https://lmweber.shinyapps.io/CrispantCal">https://lmweber.shinyapps.io/CrispantCal</a></p></li>
-<li><p>Locally from an R session in RStudio, by installing and running from GitHub with the R command <code>runGitHub("lmweber/CrispantCal")</code>. This requires the <code>shiny</code> package to be installed and loaded first, which can be done with the commands <code>install.packages("shiny")</code> and <code>library(shiny)</code>.</p></li>
-</ul>
+<h3>
+<a id="local-installation" class="anchor" href="#local-installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Local installation</h3>
+
+<p>The app can also be installed locally and run from an R session in RStudio, with the R command <code>runGitHub("lmweber/CrispantCal")</code>. This requires the <code>shiny</code> package to be installed and loaded first, which can be done with the commands <code>install.packages("shiny")</code> and <code>library(shiny)</code>.</p>
 
 <p>If you are not familiar with R, we recommend <a href="https://www.rstudio.com/">RStudio</a> as a user-friendly editor. You will also need to download R from <a href="https://cran.r-project.org/">CRAN</a>. Introductory tutorials are available from the RStudio website.</p>
 
 <p>Once you have installed R and RStudio, open RStudio and paste the commands above into the Console window, which is on the left or in the bottom left corner of the screen in the default layout. The CrispantCal app should then launch in a new window or in the Viewer pane on the right.</p>
+
+<p>Note that on Mac OSX Yosemite, the <code>wget</code> utility may cause errors with the <code>runGitHub</code> command. This can be fixed by uninstalling <code>wget</code>.</p>
 
 <h3>
 <a id="more-information" class="anchor" href="#more-information" aria-hidden="true"><span class="octicon octicon-link"></span></a>More information</h3>
