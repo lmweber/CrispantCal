@@ -1,4 +1,13 @@
-# ui.R
+#########################################################################################
+# CrispantCal Shiny app
+#
+# information and links: http://lmweber.github.io/CrispantCal/
+#
+# files: server.R, ui.R, helpers.R
+#
+# Lukas M. Weber, December 2015
+#########################################################################################
+
 
 shinyUI(fluidPage(
   titlePanel(title="CrispantCal: CRISPR-Cas9 Injection Mix Calculator",
@@ -118,6 +127,7 @@ shinyUI(fluidPage(
       plotOutput("volume_plot", width="300px", height="300px"),
       
       
+      
       br(),
       h3("Information"),
       
@@ -129,55 +139,56 @@ shinyUI(fluidPage(
         shown in the table and plot above."),
       
       
+      
       h3("Notes",
          style="margin-top:36px"),
       
-      h4("gRNA inputs",
-         style="margin-top:18px; margin-bottom:12px"),
-      tags$ul(
-        tags$li("The gRNA molar mass can be calculated by entering the DNA 
-                template sequence (e.g. ATCG...) or entering a custom value 
-                directly. If entering a DNA sequence, it can be either the full 
-                sequence (crRNA + tracrRNA, around 100 nt) or the crRNA only 
-                (around 20 nt). If you enter the crRNA only, select the option 
-                to add the tracrRNA and UUUUU-end (25,981.5 g/mol) to give the 
-                full sequence.",
-                style="margin-bottom:12px"),
-        tags$li("The calculation formula for the gRNA molar mass is: ",
-                em("(A * 329.21) + (U * 306.17) + (C * 305.18) + (G * 345.21) + 159.0,"),
-                "where A, U, C, and G are the number of each nucleotide, all T's 
-                are assumed to be converted to U's, and the 159.0 term is for a 
-                5' triphosphate.",
-                a("Link to formula source and further details.",
-                  href="http://www.basic.northwestern.edu/biotools/oligocalc.html"),
-                style="margin-bottom:12px")
-      ),
+      h4("gRNA inputs", 
+         style="margin-top:18px; margin-bottom:12px"), 
       
-      h4("Cas9 inputs",
-         style="margin-top:18px; margin-bottom:12px"),
-      tags$ul(
-        tags$li("Default values for Cas9 sample properties are available for 
-                the Cas9 samples currently used in the Mosimann lab at the 
-                University of Zurich.",
-                style="margin-bottom:12px"),
-        tags$li("The optional input for final Cas9 concentration allows you to
-                specify a desired final concentration of Cas9 in the injection 
-                mix, instead of total volume.",
-                style="margin-bottom:12px")
-      ),
+      p("The gRNA molar mass can be calculated by entering the DNA template sequence 
+        (e.g. ATCG...) or entering a custom value directly. If entering a DNA sequence, 
+        it can be either the full sequence (crRNA + tracrRNA, around 100 nt) or the crRNA 
+        only (around 20 nt). If you enter the crRNA only, select the option to add the 
+        tracrRNA and UUUUU-end (25,981.5 g/mol) to give the full sequence."), 
+
+      p("The calculation formula for the gRNA molar mass is: ", 
+        em("(A * 329.21) + (U * 306.17) + (C * 305.18) + (G * 345.21) + 159.0,"), 
+        "where A, U, C, and G are the number of each nucleotide, all T's are assumed to 
+        be converted to U's, and the 159.0 term is for a 5' triphosphate.", 
+        a("Link to formula source and further details.", 
+          href="http://www.basic.northwestern.edu/biotools/oligocalc.html")), 
+
+
+      h4("Cas9 inputs", 
+         style="margin-top:18px; margin-bottom:12px"), 
       
-      h4("KCl diluent",
-         style="margin-top:18px; margin-bottom:12px"),
-      tags$ul(
-        tags$li("The KCl diluent option allows you to calculate the additional 
-                volume of KCl diluent required to increase the KCl concentration 
-                in the injection mix to a desired value. This option was added 
-                because optimal reaction efficiency has been observed at a KCl 
-                concentration of around 300 mM, but Cas9 samples are often 
-                provided in 100-150 mM KCl solution, which is then further 
-                diluted by the rest of the injection mix.",
-                style="margin-bottom:12px")
-      ),
+      p("Default values for Cas9 sample properties are available for the Cas9 samples 
+        currently used in the Mosimann lab at the University of Zurich."), 
+      
+      p("The optional input for final Cas9 concentration allows you to specify a desired 
+        final concentration of Cas9 in the injection mix, instead of total volume."), 
+      
+      
+      h4("KCl diluent", 
+         style="margin-top:18px; margin-bottom:12px"), 
+      
+      p("The KCl diluent option allows you to calculate the additional volume of KCl 
+        diluent required to increase the KCl concentration in the injection mix to a 
+        desired value. This option was added because optimal reaction efficiency has been 
+        observed at a KCl concentration of around 300 mM, but Cas9 samples are often 
+        provided in 100-150 mM KCl solution, which is then further diluted by the rest of 
+        the injection mix."), 
+      
+      
+      
+      h3("Additional information",
+         style="margin-top:36px"),
+      
+      p("Additional information including local installation instructions available at: ", 
+        a("http://lmweber.github.io/CrispantCal/", 
+          href="http://lmweber.github.io/CrispantCal/")),
+      
       
       
       h3("Authors",
@@ -185,8 +196,9 @@ shinyUI(fluidPage(
       
       p("This tool was developed by Lukas M. Weber, Jonas Zaugg, Anastasia Felker, 
         and Christian Mosimann (Mark D. Robinson and Christian Mosimann labs), 
-        Institute of Molecular Life Sciences, University of Zurich."),
-
+        Institute of Molecular Life Sciences, University of Zurich, Switzerland."),
+      
+      
       br(),
       br()
     )

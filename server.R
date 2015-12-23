@@ -1,14 +1,24 @@
-# server.R
+#########################################################################################
+# CrispantCal Shiny app
+#
+# information and links: http://lmweber.github.io/CrispantCal/
+#
+# files: server.R, ui.R, helpers.R
+#
+# Lukas M. Weber, December 2015
+#########################################################################################
 
-# helper functions and default values
+
+# load helper functions and default values
 source("helpers.R")
 
 
 shinyServer(
   function(input, output, session) {
     
-    # Manipulate inputs
-    # -----------------
+    #####################
+    # MANIPULATE INPUTS #
+    #####################
     
     # Cas9 inputs
     Cas9_inputs <- reactive({
@@ -63,8 +73,9 @@ shinyServer(
     })
     
     
-    # Calculate volumes
-    # -----------------
+    #####################
+    # CALCULATE VOLUMES #
+    #####################
     
     # calculate volume of 1st sample of gRNA
     gRNA_vol_1st <- reactive({
@@ -126,8 +137,9 @@ shinyServer(
     
     
     
-    # Outputs
-    # -------
+    ###########
+    # OUTPUTS #
+    ###########
     
     # volumes as list
     data_list <- reactive({

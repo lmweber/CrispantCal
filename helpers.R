@@ -1,4 +1,15 @@
-# helper functions and default values
+#########################################################################################
+# CrispantCal Shiny app
+#
+# information and links: http://lmweber.github.io/CrispantCal/
+#
+# files: server.R, ui.R, helpers.R
+#
+# Lukas M. Weber, December 2015
+#########################################################################################
+
+
+### this script contains helper functions and default values
 
 
 # default value for molar mass of tracrRNA and UUUUU-end
