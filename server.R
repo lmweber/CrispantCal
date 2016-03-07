@@ -5,7 +5,7 @@
 #
 # files: server.R, ui.R, helpers.R
 #
-# Lukas M. Weber, December 2015
+# Lukas M. Weber, March 2016
 #########################################################################################
 
 
@@ -73,6 +73,32 @@ shinyServer(
     })
     
     
+    # inputs for optional second gRNA sample (same functions as above)
+    DNA_table_2nd <- reactive({
+      DNA_letters_2nd <- unlist(strsplit(input$DNA_template_2nd,""))
+      table(factor(DNA_letters_2nd,levels=c("A","T","C","G")))
+    })
+    DNA_molarMass_2nd_calc <- reactive({
+      f_DNA_molarMass(DNA_table_2nd()["A"],
+                      DNA_table_2nd()["T"],
+                      DNA_table_2nd()["C"],
+                      DNA_table_2nd()["G"])
+    })
+    DNA_molarMass_2nd <- reactive({
+      if (input$add_tracrRNA_2nd==TRUE) {
+        return( DNA_molarMass_2nd_calc() + tracrRNA_UUUUU_default )
+      } else {
+        return( DNA_molarMass_2nd_calc() )
+      }
+    })
+    observe({ 
+      if ( !(all(DNA_table_2nd()==0)) ) {
+        updateNumericInput(session,"gRNA_molarMass_2nd",value=DNA_molarMass_2nd())
+      }
+    })
+    
+    
+    
     #####################
     # CALCULATE VOLUMES #
     #####################
@@ -80,14 +106,21 @@ shinyServer(
     # calculate volume of 1st sample of gRNA
     gRNA_vol_1st <- reactive({
       f_gRNA_vol(input$gRNA_molarMass,input$gRNA_massConc,
-                 Cas9_molarMass(),Cas9_massConc(),Cas9_vol())
+                 Cas9_molarMass(),Cas9_massConc(),Cas9_vol(),
+                 input$two_gRNA_samples)
     })
     
     # calculate volume of 2nd sample of gRNA
     gRNA_vol_2nd <- reactive({
+      if (input$two_gRNA_samples=="Yes") {
+        f_gRNA_vol(input$gRNA_molarMass_2nd,input$gRNA_massConc_2nd,
+                   Cas9_molarMass(),Cas9_massConc(),Cas9_vol(),
+                   input$two_gRNA_samples)
+      } else {
         0
+      }
     })
-
+    
     # calculate and update final mass concentration of Cas9
     Cas9_final_massConc <- reactive({
       f_Cas9_final_massConc(Cas9_massConc(),Cas9_vol(),input$total_vol)
@@ -143,7 +176,8 @@ shinyServer(
     
     # volumes as list
     data_list <- reactive({
-      list(gRNA=gRNA_vol_1st_rnd(),
+      list(gRNA_1=gRNA_vol_1st_rnd(),
+           gRNA_2=gRNA_vol_2nd_rnd(),
            Cas9=Cas9_vol_rnd(),
            KCl=KCl_vol_rnd(),
            ddH2O=ddH2O_vol_rnd(),
@@ -157,11 +191,11 @@ shinyServer(
     
     # output plot
     output$volume_plot <- renderPlot({
-      data <- unlist(data_list()[1:4])
+      data <- unlist(data_list()[1:5])
       barplot(data, col="skyblue", ylim=c(0,round(input$total_vol,1)), 
               las=2, ylab="Volume (µL)")
-      text(seq(0.7,4.3,length=4),sapply(data,max,0),
-                labels=data,pos=3)
+      text(seq(0.7,5.5,length=5),sapply(data,max,0),
+           labels=data,pos=3)
     })
     
 })

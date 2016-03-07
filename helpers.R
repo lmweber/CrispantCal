@@ -5,7 +5,7 @@
 #
 # files: server.R, ui.R, helpers.R
 #
-# Lukas M. Weber, December 2015
+# Lukas M. Weber, March 2016
 #########################################################################################
 
 
@@ -24,12 +24,17 @@ Cas9_defaults <- list("MJ922 - Cas9p GFP"     = c(191.2, 2.97, 1.40, 100),
 # function to calculate gRNA volumes
 f_gRNA_vol <- function(gRNA_molarMass,gRNA_massConc,
                        Cas9_molarMass,Cas9_massConc,
-                       Cas9_vol) {
+                       Cas9_vol,
+                       two_gRNA_samples) {
   # convert concentrations
   gRNA_molarConc <- ( gRNA_massConc / 1000 ) / gRNA_molarMass  # [mol/L]
   Cas9_molarConc <- Cas9_massConc / ( Cas9_molarMass * 1000 )  # [mol/L]
   # amount of Cas9
   Cas9_amount <- Cas9_molarConc * Cas9_vol  # [µmol]
+  # adjustment if two gRNA samples
+  if (two_gRNA_samples=="Yes") {
+    Cas9_amount <- Cas9_amount / 2
+  }
   # output
   return( Cas9_amount / gRNA_molarConc )
 }
