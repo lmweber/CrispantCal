@@ -187,7 +187,7 @@ shinyServer(
     # output table
     output$volume_table <- renderTable({
       t(as.data.frame(data_list(),row.names="Volume (µL)"))
-    })
+    }, rownames=TRUE)
     
     # output plot
     output$volume_plot <- renderPlot({
